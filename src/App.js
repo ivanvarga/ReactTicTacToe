@@ -1,84 +1,44 @@
 import * as React from 'react';
-import { NICE, SUPER_NICE } from './colors';
+
+
 
 export class TicTacToe extends React.Component
 {
     render() {
+        let cells = this.props.game.board.map((el, idx) =>{
+            return (<TicTacToeCell tick={el} key={idx}></TicTacToeCell>);
+        });
         return (
         <div className="board">
-            <TicTacToeCell tick="X"></TicTacToeCell>
-            <TicTacToeCell tick="X"></TicTacToeCell>
-            <TicTacToeCell tick="X"></TicTacToeCell>
-            <TicTacToeCell tick="X"></TicTacToeCell>
-            <TicTacToeCell tick="X"></TicTacToeCell>
-            <TicTacToeCell tick="X"></TicTacToeCell>
-            <TicTacToeCell tick="X"></TicTacToeCell>
-            <TicTacToeCell tick="X"></TicTacToeCell>
-            <TicTacToeCell tick="X"></TicTacToeCell>
+            {cells}
         </div>
         );
     }
 }
 
+
 class TicTacToeCell extends React.Component{
+    
     render (){
+        let color;
+        let value;
+        let clickHandler;
+        switch(this.props.tick) {
+            case "X":
+                color = "green";
+                value = "X";
+                break;
+            case "O":
+                color = "red";
+                value = "O";
+                break;
+            default:
+                color = "";
+                clickHandler = this.props.onCellClick;
+        }   
+        let colorStyle= {color:color};
         return (
-            <div className="cell">{this.props.tick}</div>
-        );
-    }
-}
-
-class Counter extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { counter: 0 };
-        this.interval = setInterval(() => this.tick(), 1000);
-    }
-
-    tick() {
-        this.setState({
-            counter: this.state.counter + this.props.increment
-        });
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
-
-    render() {
-        return (
-            <h1 style={{ color: this.props.color }}>
-                Counter ({this.props.increment}): {this.state.counter}
-            </h1>
-        );
-    }
-}
-
-class ListItem extends React.Component{
-    render(){
-        return(
-            <li>{this.props.article} <input type="number" defaultValue={this.props.quantity}/></li>
-        );
-    }
-}
-
-export class GroceryList extends React.Component{
-    render (){
-        return(
-            <ul>
-                <ListItem article="Milk" quantity="3"></ListItem>
-                <ListItem article="Eggs" quantity="3"></ListItem>
-            </ul>
-        );
-    }
-}
-export class App extends React.Component {
-    render() {
-        return (
-            <div>
-                <Counter increment={1} color={NICE} />
-                <Counter increment={5} color={SUPER_NICE} />
-            </div>
+            <div className="cell" onClick={clickHandler} style={colorStyle}>{value}</div>
         );
     }
 }
