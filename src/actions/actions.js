@@ -6,3 +6,7 @@ export function ThickCell(cellId) {
 export function Restart(cellId) {
   return { type: ActionTypes.RESTART }
 }
+
+export function SetMode(mode) {
+  return { type: ActionTypes.SET_MODE, mode:mode }
+}

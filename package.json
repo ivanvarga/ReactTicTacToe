@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "react tic tac toe",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf test",
     "build:webpack": "webpack --progress --colors --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",

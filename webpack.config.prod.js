@@ -12,6 +12,12 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production'),
+                BABEL_ENV: JSON.stringify('production')
+            }
+        }),
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
                 warnings: false
@@ -30,7 +36,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                loaders: ['babel'],
+                loader: 'babel',
                 include: path.join(__dirname, 'src')
             }
         ]

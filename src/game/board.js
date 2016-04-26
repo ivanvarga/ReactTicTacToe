@@ -1,3 +1,5 @@
+import * as Modes from './gameModes'
+
 export function IsTerminal(board) {
        
         for(var i = 0; i <= 6; i = i + 3) {
@@ -79,7 +81,7 @@ function sortActions(currentState, player = "O", moves = 0){
     });    
 }
 
-export function takeABlindMove(currentState) {
+function takeABlindMove(currentState) {
     var available = currentState.map((cell, idx) => {
         return {
             cell: cell,
@@ -121,5 +123,18 @@ export function takeANoviceMove(currentState) {
  export function takeAMasterMove(currentState) {
      var availableActions = sortActions(currentState);
      return availableActions[0].pos;
+ }
+ 
+ export function takeMove(currentState, mode){
+     switch(mode){
+         case Modes.BLIND:
+            return takeABlindMove(currentState);
+         case Modes.NOVICE:
+            return takeANoviceMove(currentState);
+         case Modes.MASTER:
+            return takeAMasterMove(currentState);
+         default:
+          return -1;
+     }
  }
  

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 
 function mapCellStateToProps(state) {
   return {
-    winner: state.winner
+    running: state.mode && !state.winner
   };
 }
 
@@ -21,7 +21,7 @@ class TicTacToeCell extends React.Component{
         let color;
         let value;
         let clickHandler;
-        let {actions, Id} = this.props;
+        let {actions, Id, running} = this.props;
         switch(this.props.tick) {
             case "X":
                 color = "green";
@@ -33,7 +33,7 @@ class TicTacToeCell extends React.Component{
                 break;
             default:
                 color = "";
-                if(!this.props.winner)
+                if(running)
                 {
                     clickHandler = () => actions.ThickCell(Id);
                 }
