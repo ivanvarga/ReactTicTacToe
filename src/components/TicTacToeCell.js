@@ -1,21 +1,19 @@
 import * as React from 'react';
+import {connect} from 'react-redux'
+import * as Actions from '../actions/actions'
+import { bindActionCreators } from 'redux'
 
-
-
-export class TicTacToe extends React.Component
-{
-    render() {
-        let cells = this.props.game.board.map((el, idx) =>{
-            return (<TicTacToeCell tick={el} key={idx}></TicTacToeCell>);
-        });
-        return (
-        <div className="board">
-            {cells}
-        </div>
-        );
-    }
+function mapCellStateToProps(state) {
+  return {
+    winner: state.winner
+  };
 }
 
+function mapCellDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(Actions, dispatch)
+    }
+ }
 
 class TicTacToeCell extends React.Component{
     
@@ -23,6 +21,7 @@ class TicTacToeCell extends React.Component{
         let color;
         let value;
         let clickHandler;
+        let {actions, Id} = this.props;
         switch(this.props.tick) {
             case "X":
                 color = "green";
@@ -34,7 +33,10 @@ class TicTacToeCell extends React.Component{
                 break;
             default:
                 color = "";
-                clickHandler = this.props.onCellClick;
+                if(!this.props.winner)
+                {
+                    clickHandler = () => actions.ThickCell(Id);
+                }
         }   
         let colorStyle= {color:color};
         return (
@@ -42,3 +44,5 @@ class TicTacToeCell extends React.Component{
         );
     }
 }
+
+export default connect(mapCellStateToProps, mapCellDispatchToProps)(TicTacToeCell);

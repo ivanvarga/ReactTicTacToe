@@ -17,7 +17,6 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
-        new ExtractTextPlugin("style.css"),
         new HtmlWebpackPlugin({
             title:'React Tic Tac Toe Redux', 
             template: 'index.html', // Load a custom template 
@@ -30,11 +29,6 @@ module.exports = {
                 test: /\.css$/, 
                 loaders: ['style', 'css']
             },
-            // { 
-            //     test: /\.css$/, 
-            //     loader: ExtractTextPlugin.extract("style-loader", "css-loader"), 
-            //     include: path.join(__dirname, 'src') 
-            // },
             {
                 test: /\.jsx?$/,
                 loaders: ['babel'],
