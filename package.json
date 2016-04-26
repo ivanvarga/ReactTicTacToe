@@ -1,7 +1,7 @@
 {
-  "name": "react-transform-boilerplate-vscode",
+  "name": "react-ai-tic-tac-toe",
   "version": "1.0.0",
-  "description": "A new Webpack boilerplate with hot reloading React components, error handling on module and component level and Visual Studio Code integration",
+  "description": "react tic tac toe",
   "scripts": {
     "clean": "rimraf dist",
     "build:webpack": "webpack --progress --colors --config webpack.config.prod.js",
@@ -11,27 +11,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/skolmer/react-transform-boilerplate-vscode.git"
+    "url": "https://github.com/ivanvarga/ReactTicTacToe.git"
   },
   "keywords": [
     "react",
     "reactjs",
-    "boilerplate",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack",
-    "babel",
-    "react-transform"
+    "tictactoe"
   ],
-  "author": "Steffen Kolmer <steffen@kolmer.net> (http://github.com/skolmer)",
+  "author": "Ivan Varga <ivan.varga.zg@gmail.com> (https://github.com/ivanvarga)",
   "license": "CC0-1.0",
-  "bugs": {
-    "url": "https://github.com/skolmer/react-transform-boilerplate-vscode/issues"
-  },
-  "homepage": "https://github.com/skolmer/react-transform-boilerplate-vscode",
+ 
+  "homepage": "https://github.com/ivanvarga/ReactTicTacToe",
   "devDependencies": {
     "babel-core": "^6.7.2",
     "babel-eslint": "^6.0.0-beta.6",
