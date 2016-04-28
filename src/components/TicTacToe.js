@@ -21,58 +21,56 @@ function mapAppDispatchToProps(dispatch) {
  }
 
 
-class TicTacToe extends React.Component
+const TicTacToe =  (props) => 
 {
-    render() {
-        let gameInfo;
-        let {board, actions, winner, mode} = this.props;
-        let selectMenu;
-        let cells = board.map((el, idx) =>{
-            return (<TicTacToeCell tick={el}  Id={idx} key={idx}></TicTacToeCell>);
-        });
-        if(winner){
-            if(winner != "E"){
-                gameInfo = "Player " + winner +  " won" ;
-            } else {
-                gameInfo = "It's a draw";
-            }
+    let gameInfo;
+    let {board, actions, winner, mode} = props;
+    let selectMenu;
+    let cells = board.map((el, idx) =>{
+        return (<TicTacToeCell tick={el}  Id={idx} key={idx}></TicTacToeCell>);
+    });
+    if(winner){
+        if(winner != "E"){
+            gameInfo = "Player " + winner +  " won" ;
+        } else {
+            gameInfo = "It's a draw";
         }
-        if(!mode){
-            let options = [{
-                value:Modes.HUMAN,
-                text:"Puny human"
-            },{
-                value:Modes.BLIND,
-                text:"AI:Monkey"
-            },{
-                 value:Modes.NOVICE,
-                text:"AI:ADHD"
-            }, {
-                 value:Modes.MASTER,
-                text:"AI:Sensei"
-            }].map((el)=>{
-                return <ModeLink key={el.value} mode={el.value}>{el.text}</ModeLink>;
-            });
-            
-            selectMenu = <div className="ingame">Select:  {options}</div>;
-        }
-        return (
-            <div>
-                <div className="board">
-                    {cells}
-                </div>
-                <div className="control">
-                    <div className="ingame" onClick={actions.Restart}>
-                        <span className="link">Restart</span>
-                    </div>
-                    <div className="ingame">
-                        {gameInfo}
-                    </div>
-                    {selectMenu}
-                </div>
-            </div>
-        );
     }
+    if(!mode){
+        let options = [{
+            value:Modes.HUMAN,
+            text:"Puny human"
+        },{
+            value:Modes.BLIND,
+            text:"AI:Monkey"
+        },{
+                value:Modes.NOVICE,
+            text:"AI:ADHD"
+        }, {
+                value:Modes.MASTER,
+            text:"AI:Sensei"
+        }].map((el)=>{
+            return <ModeLink key={el.value} mode={el.value}>{el.text}</ModeLink>;
+        });
+        
+        selectMenu = <div className="ingame">Select:  {options}</div>;
+    }
+    return (
+        <div>
+            <div className="board">
+                {cells}
+            </div>
+            <div className="control">
+                <div className="ingame" onClick={actions.Restart}>
+                    <span className="link">Restart</span>
+                </div>
+                <div className="ingame">
+                    {gameInfo}
+                </div>
+                {selectMenu}
+            </div>
+        </div>
+    );
 }
 
 export default connect(mapAppStateToProps, mapAppDispatchToProps)(TicTacToe);

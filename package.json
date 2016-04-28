@@ -38,6 +38,7 @@
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
     "react-redux": "*",
+    "react-fastclick":"2.1.0",
     "redux-devtools": "*",
     "redbox-react": "^1.2.2",
     "rimraf": "^2.5.2",

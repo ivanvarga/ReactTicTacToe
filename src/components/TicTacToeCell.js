@@ -15,14 +15,13 @@ function mapCellDispatchToProps(dispatch) {
     }
  }
 
-class TicTacToeCell extends React.Component{
-    
-    render (){
+const TicTacToeCell= (props) => {
+
         let color;
         let value;
         let clickHandler;
-        let {actions, Id, running} = this.props;
-        switch(this.props.tick) {
+        let {actions, Id, running, tick} = props;
+        switch(tick) {
             case "X":
                 color = "green";
                 value = "X";
@@ -42,7 +41,6 @@ class TicTacToeCell extends React.Component{
         return (
             <div className="cell" onClick={clickHandler} style={colorStyle}>{value}</div>
         );
-    }
 }
 
 export default connect(mapCellStateToProps, mapCellDispatchToProps)(TicTacToeCell);

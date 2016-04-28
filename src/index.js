@@ -1,5 +1,6 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom'; 
+import ReactDOM from 'react-dom';
+import * as RTFastClick from 'react-fastclick';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import './style.css';
